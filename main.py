@@ -1,3 +1,5 @@
+#Imports para o código
+import random
 
 #Criação do baralho como uma lista 2D
 Baralho = [[0] * 13] * 4
@@ -13,3 +15,6 @@ for i in range(4):
             Baralho[i][j] = j
         else:
             Baralho[i][j] = 10
+
+#Randomização do baralho
+random.shuffle([random.shuffle(x) for x in Baralho])

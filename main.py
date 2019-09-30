@@ -35,10 +35,11 @@ def retornaCartas():
     return a
 
 #Loop principal
-while Jogando == True:
+while Jogando:
     #Recebimento da aposta
     print("Seu dinheiro é U${0}".format(Dinheiro))
     aposta = int(input("Digite o quanto vai apostar:"))
+
 
     #Verificação de aposta inválida
     if aposta < 1:
@@ -64,12 +65,12 @@ while Jogando == True:
                 print("Você tem {0} pontos.".format(SomaJ))
                 resp = input("Deseja mais duas cartas? Digite 'sim' ou 'não'")
                 if resp == "não":
-                    Apostando == False
+                    Apostando = False
             
             #Verificação de derrota
             elif SomaJ > 21:
                 resp = input("Você perdeu! Deseja continuar jogando? Digite 'sim' ou 'não'")
                 if resp == 'não':
-                    Jogando == False
-                    Apostando == False
+                    Jogando = False
+                    Apostando = False
                     

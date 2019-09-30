@@ -1,8 +1,11 @@
+#Imports para o código
+import random
 
 #Criação do baralho como uma lista 2D
 Baralho = [[0] * 13] * 4
+
 #criacao da aposta inicial
-Aposta_inicial=100
+ApostaInicial=100
 
 #Atribuição de valores nas cartas do baralho
 for i in range(4):
@@ -15,7 +18,11 @@ for i in range(4):
         else:
             Baralho[i][j] = 10
 
-aposta=int(input("Digite o quato vai apostar:"))
-while aposta<1:
+#Randomização do baralho
+random.shuffle([random.shuffle(x) for x in Baralho])
+
+#Loop de apostas
+aposta = int(input("Digite o quato vai apostar:"))
+while aposta < 1:
     print("aposta invalida")
-    aposta=int(input("Digite o quato vai apostar:"))
+    aposta = int(input("Digite o quato vai apostar:"))

@@ -2,7 +2,7 @@
 #Criação do baralho como uma lista 2D
 Baralho = [[0] * 13] * 4
 #criacao da aposta inicial
-ApostaInicial=100
+Aposta_inicial=100
 
 #Atribuição de valores nas cartas do baralho
 for i in range(4):
@@ -14,7 +14,8 @@ for i in range(4):
             Baralho[i][j] = j
         else:
             Baralho[i][j] = 10
+
 aposta=int(input("Digite o quato vai apostar:"))
-while a<1:
+while aposta<1:
     print("aposta invalida")
-    a=int(input("Digite o quato vai apostar:"))
+    aposta=int(input("Digite o quato vai apostar:"))

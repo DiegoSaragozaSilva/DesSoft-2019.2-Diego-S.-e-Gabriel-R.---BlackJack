@@ -65,6 +65,7 @@ while Jogando and Dinheiro > 0:
             if SomaJ == 21:
                 print("BLACKJACK! Você ganhou!")
                 Dinheiro += aposta * 1.5
+                Apostando == False
             
             #Verificação de continuidade da aposta
             while Apostando:
@@ -74,17 +75,23 @@ while Jogando and Dinheiro > 0:
                     Apostando = False
                 elif resp == 'sim':
                     cartasJ = retornaCartas(1)
+                    #Validação do Ás como 11 ou 1
+                    if cartasJ[0] == 11 and cartasJ[0] + SomaJ > 21:
+                        cartasJ[0] = 1
                     print("Aqui chamou 3")
                     SomaJ += int(cartasJ[0])
-                    if SomaJ > 21:
+                    if SomaJ > 21 or SomaJ == 21:
                         Apostando = False
                     if not SomaPC >= 17:
                         cartasPC = retornaCartas(1)
+                        #Validação do Ás como 11 ou 1
+                        if cartasPC[0] == 11 and cartasPC[0] + SomaPC > 21:
+                            cartasPC[0] = 1
                         print("Aqui chamou 4")
                         SomaPC += int(cartasPC[0])
                     
     #Verificação de derrota
-    if SomaJ > 21 or SomaPC > SomaJ and SomaPC <= 21:
+    if SomaJ > 21 or (SomaPC > SomaJ and SomaPC <= 21):
         print("O dealer fez {0} e você fez {1}".format(SomaPC, SomaJ))
         resp = input("Você perdeu! Deseja continuar jogando? Digite 'sim' ou 'não'")
 
@@ -92,14 +99,20 @@ while Jogando and Dinheiro > 0:
             Jogando = False
             Apostando = False
         elif resp == 'sim':
-            SomaJ = 0
-            SomaPC = 0
-            Apostando = False
+            if Dinheiro == 0:
+                print("Você não tem mais dinheiro para apostar! Até a próxima!")
+                Apostando = False
+                Jogando = False
+            else:        
+                SomaJ = 0
+                SomaPC = 0
+                Apostando = False
             
     #Verificação de vitória        
     elif SomaJ <= 21 and SomaPC < SomaJ:
         print("O dealer fez {0} e você fez {1}".format(SomaPC, SomaJ))
         resp = input("Você ganhou! Deseja continuar jogando? Digite 'sim' ou 'não'")
+        
         if resp == 'não':
             Jogando = False
             Apostando = False

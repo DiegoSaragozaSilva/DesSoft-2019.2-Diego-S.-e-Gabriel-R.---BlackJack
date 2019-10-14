@@ -17,6 +17,10 @@ print("Bem vindo à mesa de Black Jack! ")
 
 #Input do jogador para determinar o numero de baralhos:
 NB = int(input("Quantos baralhos você deseja? "))
+
+#Input do jogador para determinar o numero de jogadores:
+NJ=int(input("Quantos jogadores irão participar"))
+
 #Atribuição de valores nas cartas do baralho
 for i in range(0, len(Baralho)):
     if i == 0:

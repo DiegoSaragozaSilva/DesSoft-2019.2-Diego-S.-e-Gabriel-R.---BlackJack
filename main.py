@@ -11,8 +11,12 @@ SomaPC = 0
 #Variável que controla quando o jogador está jogando e apostando ou não
 Jogando = True
 Apostando = False
-#input do jogador para determinar o numero de baralhos:
-NB=int(input("Qual é o numero de baralhos?:"))
+
+#Boas vindas!
+print("Bem vindo à mesa de Black Jack! ")
+
+#Input do jogador para determinar o numero de baralhos:
+NB = int(input("Quantos baralhos você deseja? "))
 #Atribuição de valores nas cartas do baralho
 for i in range(0, len(Baralho)):
     if i == 0:
@@ -55,12 +59,10 @@ while Jogando and Dinheiro > 0:
             #Loop de apostas
             Dinheiro -= aposta
             cartasJ = retornaCartas(2)
-            print("Aqui chamou 1")
             SomaJ += cartasJ[0] + cartasJ[1]
             if not SomaPC >= 17:
                 cartasPC = retornaCartas(2)
-                print("Aqui chamou 2")
-                SomaPC += cartasPC[0] + cartasPC[0]
+                SomaPC += cartasPC[0] + cartasPC[1]
 
             #Verificação de Blackjack
             if SomaJ == 21:
@@ -79,7 +81,6 @@ while Jogando and Dinheiro > 0:
                     #Validação do Ás como 11 ou 1
                     if cartasJ[0] == 11 and cartasJ[0] + SomaJ > 21:
                         cartasJ[0] = 1
-                    print("Aqui chamou 3")
                     SomaJ += int(cartasJ[0])
                     if SomaJ > 21 or SomaJ == 21:
                         Apostando = False
@@ -88,7 +89,6 @@ while Jogando and Dinheiro > 0:
                         #Validação do Ás como 11 ou 1
                         if cartasPC[0] == 11 and cartasPC[0] + SomaPC > 21:
                             cartasPC[0] = 1
-                        print("Aqui chamou 4")
                         SomaPC += int(cartasPC[0])
                     
     #Verificação de derrota

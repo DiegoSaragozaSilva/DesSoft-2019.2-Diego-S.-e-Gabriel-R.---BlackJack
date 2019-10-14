@@ -11,7 +11,8 @@ SomaPC = 0
 #Variável que controla quando o jogador está jogando e apostando ou não
 Jogando = True
 Apostando = False
-
+#input do jogador para determinar o numero de baralhos:
+NB=int(input("Qual é o numero de baralhos?:"))
 #Atribuição de valores nas cartas do baralho
 for i in range(0, len(Baralho)):
     if i == 0:
@@ -21,7 +22,7 @@ for i in range(0, len(Baralho)):
     else:
         Baralho[i] = 10
 
-Baralho *= 4
+Baralho *= (4*NB)
 
 #Randomização do baralho
 random.shuffle(Baralho)

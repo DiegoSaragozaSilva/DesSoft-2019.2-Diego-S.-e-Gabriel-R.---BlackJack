@@ -33,12 +33,10 @@ random.shuffle(Baralho)
 
 #Função que retorna o valor de duas cartas
 def retornaCartas(n):
-    print(n)
     a = [0] * n
     for i in range(n):
         x = random.randint(0, len(Baralho) - 1)
         a[i] = Baralho.pop(x)
-        print(len(Baralho))
     return a
 
 #Loop principal

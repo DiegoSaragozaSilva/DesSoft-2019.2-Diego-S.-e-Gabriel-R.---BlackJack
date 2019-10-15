@@ -61,10 +61,39 @@ for i in range(len(Dinheiro)):
             if Apostas[i] < 1 or Apostas[i] > Dinheiro[i]:
                 print("Aposta invalida! Aposte valores maiores que 0!")
                 aposta = int(input("Digite o quanto vai apostar:"))
+<<<<<<< HEAD
+
+<<<<<<< HEAD
+    elif aposta >= 1:
+        Apostando = True
+        
+        while Apostando:
+            #Loop de apostas
+            Dinheiro -= aposta
+            cartasJ = retornaCartas(2)
+            SomaJ += cartasJ[0] + cartasJ[1]
+            if not SomaPC >= 17:
+                cartasPC = retornaCartas(2)
+                SomaPC += cartasPC[0] + cartasPC[1]
+
+            #Verificação de Blackjack
+            if SomaJ == 21:
+                print("BLACKJACK! Você ganhou!")
+                Dinheiro += aposta * 1.5
+                Apostando = False
+            
+            #Verificação de continuidade da aposta
+=======
+            elif Apostas[i] >= 1:
+                Apostando = True
+        for i in range(len(Dinheiro)):   
+>>>>>>> ecfe43d9b37b13b7baab951d307ca7453ecf5458
+=======
 
             elif Apostas[i] >= 1:
                 Apostando = True
         for i in range(len(Dinheiro)):   
+>>>>>>> ecfe43d9b37b13b7baab951d307ca7453ecf5458
             while Apostando:
                 #Loop de apostas
                 Dinheiro[i] -= Apostas[i]
@@ -102,9 +131,10 @@ for i in range(len(Dinheiro)):
             cartasPC[0] = 1
             SomaPC += int(cartasPC[0])
 
+
     #Verificação de derrota
-    if SomaJ > 21:
-        print("você fez {0} pontos".format(SomaJ))
+    if SomaJ > 21 or (SomaPC > SomaJ and SomaPC <= 21):
+        print("O dealer fez {0} e você fez {1}".format(SomaPC, SomaJ))
         resp= input("Você perdeu! Deseja continuar jogando? Digite 'sim' ou 'não'")
         if resp == 'não':
             Jogando = False
@@ -117,26 +147,11 @@ for i in range(len(Dinheiro)):
             else:        
                 SomaJ = 0
                 SomaPC = 0
+                Jogando = True
                 Apostando = False
-    elif SomaPC > SomaJ and SomaPC <= 21:
-        print("O dealer fez {0} e você fez {1}".format(SomaPC, SomaJ))
-        resp = input("Você perdeu! Deseja continuar jogando? Digite 'sim' ou 'não'")
 
-        if resp == 'não':
-            Jogando = False
-            Apostando = False
-        elif resp == 'sim':
-            if Dinheiro == 0:
-                print("Você não tem mais dinheiro para apostar! Até a próxima!")
-                Apostando = False
-                Jogando = False
-            else:        
-                SomaJ = 0
-                SomaPC = 0
-                Apostando = False
-            
     #Verificação de vitória        
-    elif SomaJ <= 21 and SomaPC < SomaJ:
+    elif (SomaJ <= 21 and SomaPC < SomaJ) or (SomaPC > 21 and SomaJ < 21):
         print("O dealer fez {0} e você fez {1}".format(SomaPC, SomaJ))
         resp = input("Você ganhou! Deseja continuar jogando? Digite 'sim' ou 'não'")
         
@@ -147,4 +162,18 @@ for i in range(len(Dinheiro)):
             Dinheiro += aposta * 2
             SomaJ = 0
             SomaPC = 0
-            Apostando = False     
+            Apostando = False
+
+    #Verificação de empate
+    elif SomaJ == SomaPC:
+        print("O dealer fez {0} e você fez {1}".format(SomaPC, SomaJ))
+        resp = input("O jogo empatou! Deseja continuar jogando? Digite 'sim' ou 'não'")
+
+        if resp == 'não':
+            Jogando = False
+            Apostando = False
+        elif resp == 'sim':
+            Dinheiro += aposta
+            SomaJ = 0
+            SomaPC = 0
+            Apostando = False

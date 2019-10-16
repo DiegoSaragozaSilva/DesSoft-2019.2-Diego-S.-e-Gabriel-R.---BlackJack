@@ -66,6 +66,8 @@ while Jogando and Dinheiro > 0:
             if SomaJ == 21:
                 print("BLACKJACK! Você ganhou!")
                 Dinheiro += aposta * 1.5
+                SomaPC = 0
+                SomaJ = 0
                 Apostando = False
             
             #Verificação de continuidade da aposta

@@ -72,7 +72,6 @@ while Jogando:
             Dinheiro[i] -= aposta[i]
             cartasJ = retornaCartas(2)
             SomaJ[i] = cartasJ[0] + cartasJ[1]
-            print(Dinheiro[i])
             #Verificação de 2 A's
             if SomaJ[i] == 22:
                 SomaJ[i] == 12
@@ -86,9 +85,18 @@ while Jogando:
             #Verificação de continuidade da aposta
             while Apostando:
                     print("Jogador {0} Você tem {1} pontos.".format(i+1, int(SomaJ[i])))
-                    resp = input("Jogador {0} Deseja mais uma carta? Digite 'sim' ou 'não'".format(i+1))
+                    resp = input("Jogador {0} Deseja mais uma carta?(sim ou não)ou deseja fazer um double?(double)".format(i+1))
                     if resp == 'não':
                         Apostando = False
+                    elif resp== "double":
+                        cartasJd = retornaCartas(1)
+                        #Validação do Ás como 11 ou 1
+                        if cartasJd[0] == 11 and cartasJ[0] + SomaJ[i] > 21:
+                            cartasJd[0] = 1
+                        Dinheiro[i] -= aposta[i]
+                        aposta[i] += aposta[i]
+                        Apostando = False
+                        SomaJ[i] += int(cartasJd[0])
                     elif resp == 'sim':
                         cartasJ = retornaCartas(1)
                         #Validação do Ás como 11 ou 1
@@ -105,7 +113,6 @@ while Jogando:
         if cartasPC[0] == 11 and cartasPC[0] + SomaPC > 21:
             cartasPC[0] = 1
             SomaPC += float(cartasPC[0])
-        print(SomaPC)
 
     for i in range(len(Dinheiro)):
         #Verificação de derrota
